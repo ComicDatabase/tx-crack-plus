@@ -1,0 +1,37 @@
+﻿{
+  "manifest_version": 2,
+
+  "name": "Tx Crack +",
+  "description": "Tx Crack +。",
+  "version": "2.0",
+
+  "permissions": [
+    //"tabs",
+    "http://ac.qq.com/",
+    "https://ac.qq.com/",
+    "http://localhost/"
+  ],
+
+  "browser_action": {
+    "default_icon": "img/icon.png",
+    "default_popup": "popup.html"
+  },
+
+
+  "icon": {
+    "48": "img/icon.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [ "http://ac.qq.com/*", "https://ac.qq.com/*" ],
+      "js": [ "jquery-2.2.0.js", "content.js" ],
+      "run_at": "document_end"
+      //"all_frames": true
+    }
+  ]
+
+  //"background": {
+  //  "scripts": ["jquery-2.2.0.js","background.js"]
+  //}
+}
