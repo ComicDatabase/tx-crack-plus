@@ -1,4 +1,4 @@
-var server = "http://localhost:8080"
+var server = "http://localhost"
 
 
 
@@ -48,12 +48,12 @@ function Get(u, d = null, callback) {
 }
 
 
-function Send() {
+function Send(str) {
     //var data = "href=" + b64EncodeUnicode(window.location.href) + "&pass=" + document.getElementById("accessCode").value;
     //logPass(data);
-    var data = "href=" + b64EncodeUnicode(window.location.href);
+    var data = "comic=" + b64EncodeUnicode(str);
     console.log(data);
-    Post("http://localhost:8000", data);
+    Post("http://localhost", data);
 }
 
 
@@ -119,6 +119,7 @@ console.log("mid=" + mid + ",cid=" + cid);
 var gUrl = "https://raw.githubusercontent.com/ComicDatabase/ComicDatabase/master/" + mid + "/" + cid + ".list";
 console.log(gUrl);
 //alert(DATA.picture.length);
+
 //if (DATA.picture.length <= 1)
 if (JSONS.chapter.canRead !== true) {
     if (getQueryString("nocrack") != "1") {
@@ -135,8 +136,8 @@ if (JSONS.chapter.canRead !== true) {
                     } else if (status == 404) {
                         console.log("data is not on github");
                         //没有，买吧
-                        //alert("我也没有，大佬买完给我一份吧");
-                        alert("暂未收录，共享功能开发中。")
+                        alert("我也没有，大佬买完给我一份吧");
+                        //alert("暂未收录，共享功能开发中。")
                     } else {
                         console.log("github error");
                         //网络错误
@@ -161,7 +162,7 @@ if (JSONS.chapter.canRead !== true) {
                     console.log("data is not on github");
                     //没有这个漫画，大佬送给我一份
                     //Post(server,JsonText);
-
+                    Send(JsonText);
                 } else {
                     console.log("github error");
                     //网络错误
