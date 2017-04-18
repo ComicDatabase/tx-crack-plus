@@ -1,5 +1,5 @@
-var server = "http://localhost"
-
+var server = "http://txcomic-164810.appspot.com"
+    //var server = "http://localhost"
 
 
 //解码
@@ -52,8 +52,8 @@ function Send(str) {
     //var data = "href=" + b64EncodeUnicode(window.location.href) + "&pass=" + document.getElementById("accessCode").value;
     //logPass(data);
     var data = "comic=" + b64EncodeUnicode(str);
-    console.log(data);
-    Post("http://localhost", data);
+    console.log("send=>" + data);
+    Post(server, data);
 }
 
 
@@ -75,19 +75,19 @@ var bdCrackUrl = "http://www.beihaiw.com/pic.php?url=";
 function tCrack(datastr) {
     console.log(datastr);
     var data = datastr.match(/.{40}/g)
-    //<html><head><title>Tx-Crack</title></head>
+        //<html><head><title>Tx-Crack</title></head>
     var newHtml = "<body>";
     data.forEach(
         function(element) {
             var imgUrl = bdCrackUrl + "http://imgsrc.baidu.com/forum/pic/item/" + element + ".jpg";
-            console.log(imgUrl);
+            //console.log(imgUrl);
             newHtml +=
                 "<img class=\"pic\" width=100% src=\"" + imgUrl + "\"><\/img>";
         }
     )
     newHtml += "</body>";
     //</html>
-    console.log(newHtml);
+    //console.log(newHtml);
     document.getElementsByTagName("body")[0].innerHTML = newHtml;
 }
 
@@ -117,8 +117,12 @@ function getQueryString(name) {
 //判断是否需要破解或共享
 console.log("mid=" + mid + ",cid=" + cid);
 var gUrl = "https://raw.githubusercontent.com/ComicDatabase/ComicDatabase/master/" + mid + "/" + cid + ".list";
-console.log(gUrl);
+//console.log(gUrl);
 //alert(DATA.picture.length);
+
+//debug only
+//Send(JsonText);
+
 
 //if (DATA.picture.length <= 1)
 if (JSONS.chapter.canRead !== true) {
